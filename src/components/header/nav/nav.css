@@ -1,0 +1,8 @@
+.nav li{
+   
+   position: relative;
+   flex-shrink: 1;
+   width: 110px;
+   
+
+}
