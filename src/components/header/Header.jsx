@@ -3,12 +3,12 @@ import Link from "next/link";
 
 import DesktopNav from "./nav/DesktopNav";
 import PhoneNav from "./nav/PhoneNav";
-const Header = ({data}) =>{
-    console.log(data)
+const Header = ({fetchLogo}) =>{
+    
     return(
         <header className="header w-full shadow-2xl ">
             <div  className="flex justify-between items-center  max-w-7xl  mx-auto py-2     max-2xl:px-2">
-                <DesktopNav/>
+                <DesktopNav fetchLogo={fetchLogo}/>
                 <PhoneNav/>
                  <div className=" min-[720px]:hidden w-[100px] h-[50px] relative"><Link  href={'/'}><Image src={'/logo.svg'} fill={true}  alt="Logo"/></Link></div>
                 <div className="w-[110px] shrink flex items-center max-[720px]:w-auto ">   

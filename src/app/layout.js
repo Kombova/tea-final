@@ -16,13 +16,13 @@ export const metadata = {
 //   })
 //   return data.items;
 // }
-
-// const getSaiteControle = async ()=>{
-//   const data =await client.getEntries({
-//     content_type: 'saite'
-//   })
-//   return data.items;
-// }
+export const revalidate = 10
+const getSiteControle = async ()=>{
+  const data =await client.getEntries({
+    content_type: 'saite'
+  })
+  return data.items;
+}
 
 export default async function RootLayout({ children }) {
   
@@ -30,13 +30,13 @@ export default async function RootLayout({ children }) {
     // let siteManagement = await getSaiteControle();
     // console.log(siteManagement)
     
- 
+  let fetchLogo = await getSiteControle()
   
   return (
     <html>
       <body className={montserrat.className}>
         <div className='w-full min-h-screen'>
-          <Header />
+          <Header fetchLogo={fetchLogo[0].fields.logo.fields.file.url}/>
           <main className=' max-w-7xl mx-auto my-6'>
             {children}
           </main>
