@@ -16,7 +16,8 @@ export const metadata = {
 //   })
 //   return data.items;
 // }
-export const revalidate = 10
+// export const revalidate = 10
+
 const getSiteControle = async ()=>{
   const data =await client.getEntries({
     content_type: 'saite'
