@@ -3,7 +3,8 @@ import Link from "next/link";
 
 import DesktopNav from "./nav/DesktopNav";
 import PhoneNav from "./nav/PhoneNav";
-const Header = () =>{
+const Header = ({data}) =>{
+    console.log(data)
     return(
         <header className="header w-full shadow-2xl ">
             <div  className="flex justify-between items-center  max-w-7xl  mx-auto py-2     max-2xl:px-2">
