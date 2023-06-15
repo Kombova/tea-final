@@ -17,7 +17,7 @@ const DesktopNav = ({fetchLogo}) =>{
         let target = e.target;
         setPageNow(target.pathname) 
     }
-    console.log(fetchLogo)
+    
    
    
     return(
