@@ -23,9 +23,9 @@
 const ProductCard = () =>{
     return(
         <>
-            <button onClick={()=>{sendOrder()}}>Send Order!!!</button>
+            <li className="w-[320px] h-[507px]"></li>
         </>
     )
 }
 
-export default ProductCard
+export default ProductCard;
