@@ -33,7 +33,7 @@ export default async function Home( ){
       <Slider array={sliderArr} sliderLinks={sliderLink}/>
       <h1 className='mt-20 max-w-[500px] mx-auto text-[36px] text-center px-[2px] border-t-2 border-b-2 border-[black]'>Магазин</h1>
       <ul className="w-full mt-20 flex flex-wrap justify-center gap-10">
-                {allProduct.map((item)=> (<ProductCard product = {item}/>))}
+                {allProduct.map((item)=> (<ProductCard product = {item} key={item.id}/>))}
       </ul> 
     </main>
   )
