@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 const ControleCard = ({step,setPrice,initialPrice}) =>{
-    let startCount = !step ? 1 : step[1];
+    let startCount = !step ? 1 : step.length === 3 ? step[1] : step[0] ;
     const[count,setCount]=useState(+startCount);
     useEffect(()=>{
         if(step){
