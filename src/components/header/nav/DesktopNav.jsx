@@ -21,24 +21,24 @@ const DesktopNav = ({fetchLogo}) =>{
    
    
     return(
-        <nav className="nav grow max-[720px]:hidden ">
+        <nav className="nav max-[1000px]:hidden ">
             <LayoutGroup >
-                <ul  className=" flex   justify-between items-center font-semibold text-[18px] text-center box-content ">
+                <ul  className=" flex   justify-start items-center gap-1   font-medium text-[18px] text-center box-content ">
                     <li className="relative "   onClick={(e)=>{activateNav(e)}} ><Link href='/' >Головна</Link>
                         {pageNow === '/' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute"></motion.div> : null}
                     </li>
-                    <li  className="relative" onClick={(e)=>{activateNav(e)}}><Link href='/shop'>Магазин</Link>
+                    {/* <li  className="relative" onClick={(e)=>{activateNav(e)}}><Link href='/shop'>Магазин</Link>
                         {pageNow === '/shop' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute"></motion.div> : null}
-                    </li>
+                    </li> */}
                     <li  onClick={(e)=>{activateNav(e)}}><Link href='/about-us'>О нас</Link>
                         {pageNow === '/about-us' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute"></motion.div> : null}
                     </li>
-                <li className="w-[120px] h-[80px] z-10"><Link href={'/'}><Image src={`http:${fetchLogo}`} fill={true} alt="Logo"/></Link></li>
+                {/* <li className="w-[120px] h-[65px] z-10"><Link href={'/'}><Image src={`http:${fetchLogo}`} fill={true} alt="Logo"/></Link></li> */}
                     <li  onClick={(e)=>{activateNav(e)}}><Link href='/delivery'>Доставка</Link>
-                        {pageNow === '/delivery' ? <motion.div layoutId="line2" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute"></motion.div> : null}
+                        {pageNow === '/delivery' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute"></motion.div> : null}
                     </li>
                     <li  onClick={(e)=>{activateNav(e)}}><Link href='/blog'>Блог</Link>
-                        {pageNow === '/blog' ? <motion.div layoutId="line2" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute"></motion.div> : null}
+                        {pageNow === '/blog' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute"></motion.div> : null}
                     </li>
                     
                 </ul>

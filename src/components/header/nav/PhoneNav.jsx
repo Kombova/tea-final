@@ -15,7 +15,7 @@ const PhoneNav = () =>{
     }
 
     return(
-        <nav className="nav  min-[720px]:hidden ">
+        <nav className="nav  min-[1000px]:hidden ">
             <div className="burger_nav w-[50px] h-[50px] border-solid rounded-[10px] inline-flex justify-center items-center py-[10px] flex-wrap "  onClick={()=>clickOnButton()}>
                     <span className="w-[80%] h-[2px] block bg-black"></span>
                     <span className="w-[80%] h-[2px] block bg-black"></span>

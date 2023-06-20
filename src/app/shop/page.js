@@ -8,13 +8,14 @@ const getProducts = async ()=>{
   }
 export default async function Shop(){
 
-    let allProduct = await getProducts();
+    
     
     return(
         <>
-            <ul className="w-full flex justify-center gap-10">
+            {/* <ul className="w-full flex justify-center gap-10">
                 {allProduct.map((item)=> (<ProductCard product = {item}/>))}
-            </ul> 
+            </ul>  */}
+            <h1>Ще не готово ...</h1>
         </>
     )
 } 

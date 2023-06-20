@@ -1,7 +1,7 @@
 
 import client from '@/contentful';
 import Slider from '@/components/slider/Slider';
-
+import ProductCard from '@/components/product/ProductCard';
 
 const getSliderImgArr = async ()=>{
   const data =await client.getEntries({
@@ -9,6 +9,13 @@ const getSliderImgArr = async ()=>{
   })
   return data.items;
 }
+const getProducts = async ()=>{
+  const data =await client.getEntries({
+    content_type: 'product'
+  })
+  return data.items;
+}
+
 
 export default async function Home( ){
 
@@ -19,13 +26,15 @@ export default async function Home( ){
   const sliderLink =  sliderImgArr[0].fields.sliderLink;
 
  
-  
+  let allProduct = await getProducts();
  
   return (
     <main> 
       <Slider array={sliderArr} sliderLinks={sliderLink}/>
-      <h2 className='mt-[100px] max-w-[500px] mx-auto text-[36px] text-center px-[2px] border-t-2 border-b-2 border-[black]'>Нові надходження</h2>
-      
+      <h1 className='mt-20 max-w-[500px] mx-auto text-[36px] text-center px-[2px] border-t-2 border-b-2 border-[black]'>Магазин</h1>
+      <ul className="w-full mt-20 flex flex-wrap justify-center gap-10">
+                {allProduct.map((item)=> (<ProductCard product = {item}/>))}
+      </ul> 
     </main>
   )
 }
