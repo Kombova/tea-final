@@ -34,8 +34,8 @@ const ControleCard = ({step,setPrice,initialPrice}) =>{
             {step &&  <div className="flex h-full justify-evenly items-center text-white text-[16px] font-medium">
                 {step.map((step)=>{
                         if(count === +step){
-                            return <button key={step} className="bg-white text-black w-[85px] h-5/6 rounded-[10px]">{step} гр</button>
-                        }else return <button key={step} className=" w-[85px]" onClick={(e)=> clickSelect(e)} value={step}>{step} гр</button>   
+                            return <button key={Math.random()} className="bg-white text-black w-[85px] h-5/6 rounded-[10px]">{step} гр</button>
+                        }else return <button key={Math.random()} className=" w-[85px]" onClick={(e)=> clickSelect(e)} value={step}>{step} гр</button>   
                     })
                 }
                 </div>     
