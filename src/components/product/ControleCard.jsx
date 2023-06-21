@@ -1,6 +1,9 @@
 'use client'
 import { useEffect, useState } from "react";
-const ControleCard = ({step,setPrice,initialPrice}) =>{
+import cartStore from "@/stores/cart-store";
+import Image from "next/image";
+
+const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) =>{
     let startCount = !step ? 1 : step.length === 3 ? step[1] : step[0] ;
     const[count,setCount]=useState(+startCount);
     useEffect(()=>{
@@ -10,7 +13,7 @@ const ControleCard = ({step,setPrice,initialPrice}) =>{
         }
         
     })
-
+    const {postToShoppingCart} = cartStore;
     function clickPlus(){
         setCount((count)=>count + 1)
         setPrice(()=>initialPrice * (count+1))
@@ -40,6 +43,7 @@ const ControleCard = ({step,setPrice,initialPrice}) =>{
                 }
                 </div>     
             }
+            <button className=" w-full h-12 mt-5 flex justify-center gap-3 items-center text-[19px] text-white rounded-[10px] font-semibold bg-[#0E8388]" onClick={()=> postToShoppingCart(title,img,count,price,id,category)}><span>В кошик</span><Image src='little-cart.svg' width={30} height={30} alt='Shopping cart' /></button>
         </div>
     )
 }
