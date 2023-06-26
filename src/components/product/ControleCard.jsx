@@ -1,8 +1,8 @@
 'use client'
 import { useContext, useEffect, useState } from "react";
-import cartStore from "@/stores/cart-store";
 import Image from "next/image";
 import { GlobalStateContext } from "@/context/GlobalState";
+
 
 const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) =>{
     let startCount = !step ? 1 : step.length === 3 ? step[1] : step[0] ;

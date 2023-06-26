@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GlobalStateContext } from "@/context/GlobalState";
-
+import MiniShoppingCart from "./MiniShoppingCart";
 const ShoppingCart = () => {
     const[showShoppingCart,setShowShoppingCart]=useState(false);
     const[sum,setSum]=useState(0);
@@ -71,7 +71,7 @@ const ShoppingCart = () => {
             
             <AnimatePresence>
             {showShoppingCart &&
-                <motion.div className=" mt-[75px]   w-96 max-md:w-full max-md:border-0 min-h-[100px] absolute right-0 top-0 shadow-xl bg-white  text-[black] border-b-2 border-l-2 border-[grey] max-md:h-screen">
+                <motion.div className="z-10 mt-[75px]   w-96 max-md:w-full max-md:border-0 min-h-[100px] absolute right-0 top-0 shadow-xl bg-white  text-[black] border-b-2 border-l-2 border-[grey] max-md:h-screen">
                     <button className=" cancel_button w-[20px] h-[20px] absolute left-[10px] top-[10px] max-md:hidden" onClick={()=>setShowShoppingCart(!showShoppingCart)}>
                                         <Image
                                             src='/back-button.svg'
@@ -84,7 +84,6 @@ const ShoppingCart = () => {
                         <ul className=" py-10 px-4 flex flex-col gap-3 overflow-x-hidden overflow-y-auto max-md:h-4/6  ">
                             {globalState.shoppingCartArr.length === 0 && <p className=" flex justify-center items-center">Поки тут пусто ...</p>}
                             {globalState.shoppingCartArr && globalState.shoppingCartArr.map((item,index)=>{
-                            
                                 return(
                                     <li key={Math.random()} className="w-full h-28 flex  justify-between items-center gap-1  pr-2 border-b-[1px] border-[grey]">
                                         <Image className="" src={item.img} width={100} height={50} alt={item.title}/>
@@ -114,13 +113,8 @@ const ShoppingCart = () => {
                 </motion.div>
             }
             </AnimatePresence>
-            
-        </div>
-        
-
-        
-
-        
+            <MiniShoppingCart/>
+        </div>       
     )
 }
 
