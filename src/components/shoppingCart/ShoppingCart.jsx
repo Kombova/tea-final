@@ -88,8 +88,8 @@ const ShoppingCart = () => {
                                 return(
                                     <li key={Math.random()} className="w-full h-28 flex  justify-between items-center gap-1  pr-2 border-b-[1px] border-[grey]">
                                         <Image className="" src={item.img} width={100} height={50} alt={item.title}/>
-                                        <div className="flex flex-col items-center relative    justify-center overflow-hidden">
-                                            <h6 className=" text-[15px] pl-1  truncate w-[210px]">{item.title}</h6>
+                                        <div className="flex flex-col items-center grow relative    justify-center overflow-hidden">
+                                            <h6 className=" text-[15px] truncate   w-full    ">{item.title}</h6>
                                             <p className=" font-medium text-left w-full">{item.amount}  <span className=" font-normal text-[13px]">{item.category === 'tea' ? 'г' : 'шт'}</span></p>
                                             <p className=" font-medium text-left w-full">{item.price}<span className=" font-normal text-[13px]">  {grivnaSymbol}</span></p>
                                             <div className="w-[80px] absolute top-[30px] left-[70px] flex justify-around rounded border-[1px] border-solid border-[grey]">
