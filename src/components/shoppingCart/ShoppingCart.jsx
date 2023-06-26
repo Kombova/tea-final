@@ -7,7 +7,6 @@ import { GlobalStateContext } from "@/context/GlobalState";
 
 const ShoppingCart = () => {
     const[showShoppingCart,setShowShoppingCart]=useState(false);
-    const[showMiniCart, setShowMiniCart]=useState(false);
     const[sum,setSum]=useState(0);
     let{globalState,setGlobalState}=useContext(GlobalStateContext);
     const grivnaSymbol = "\u20B4";
@@ -64,19 +63,15 @@ const ShoppingCart = () => {
     }
     
     return(
-        <div className="flex items-center h-full">
+        <div className="flex items-center h-full ">
             <div className={`relative flex items-center w-[50px] h-full ml-auto mr-0 ${showShoppingCart ? 'bg-slate-200' : null} cursor-pointer`} onClick={()=> setShowShoppingCart(!showShoppingCart)}>
                 <Image src={'/shopping-cart.svg'} width={44} height={44} alt="Shopping Cart"/>
                 <div className="absolute bottom-[3px] left-[-10px] w-7 h-7 rounded-[100%] bg-[#0E8388] text-[white] text-[18px] font-semibold flex justify-center items-center">{globalState.shoppingCartArr.length}</div>
             </div>
-            {showMiniCart &&
-                <div className="mt-[75px]  h-8 w-96 bg-blue-400">
             
-                </div>
-            }
             <AnimatePresence>
             {showShoppingCart &&
-                <motion.div className=" mt-[75px]   w-96 min-h-[100px] absolute right-0 top-0 shadow-xl bg-white  text-[black] border-b-2 border-l-2 border-[grey] max-md:h-screen">
+                <motion.div className=" mt-[75px]   w-96 max-md:w-full max-md:border-0 min-h-[100px] absolute right-0 top-0 shadow-xl bg-white  text-[black] border-b-2 border-l-2 border-[grey] max-md:h-screen">
                     <button className=" cancel_button w-[20px] h-[20px] absolute left-[10px] top-[10px] max-md:hidden" onClick={()=>setShowShoppingCart(!showShoppingCart)}>
                                         <Image
                                             src='/back-button.svg'
