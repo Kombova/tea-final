@@ -86,7 +86,7 @@ const ShoppingCart = () => {
                             {globalState.shoppingCartArr && globalState.shoppingCartArr.map((item,index)=>{
                             
                                 return(
-                                    <li key={Math.random()} className="w-full h-28 flex  justify-between items-center  pr-2 border-b-[1px] border-[grey]">
+                                    <li key={Math.random()} className="w-full h-28 flex  justify-between items-center gap-1  pr-2 border-b-[1px] border-[grey]">
                                         <Image className="" src={item.img} width={100} height={50} alt={item.title}/>
                                         <div className="flex flex-col items-center relative    justify-center overflow-hidden">
                                             <h6 className=" text-[15px]  truncate w-[210px]">{item.title}</h6>
