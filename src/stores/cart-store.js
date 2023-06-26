@@ -1,15 +1,10 @@
-const { makeAutoObservable } = require("mobx");
-
-class  CartStore{
-    shoppingCartCount = 0;
-    shoppingCartArr = [];
 
 
-    constructor(){
-        makeAutoObservable(this)
-    }
+let  CartStore = {
+    shoppingCartCount : 0,
+    shoppingCartArr : [],
 
-    postToShoppingCart = (title,img,amount,price,id,category) => {
+    postToShoppingCart(title,img,amount,price,id,category){
         const foundElement = this.shoppingCartArr.find(element => element.id === id);
         if(foundElement){
             foundElement.amount += amount;
@@ -25,12 +20,9 @@ class  CartStore{
             category: category
             })
         }
-            
-        
+    },
 
-        
-    }
-    removeProduct = (valueToRemove) =>{
+    removeProduct : (valueToRemove) => {
         
         if (valueToRemove > -1) {
             this.shoppingCartArr.splice(valueToRemove, 1); // Используйте splice для удаления элемента
@@ -39,4 +31,4 @@ class  CartStore{
     }
 }
 
-export default new CartStore();
+export default CartStore;

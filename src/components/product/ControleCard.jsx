@@ -1,7 +1,8 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import cartStore from "@/stores/cart-store";
 import Image from "next/image";
+import { GlobalStateContext } from "@/context/GlobalState";
 
 const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) =>{
     let startCount = !step ? 1 : step.length === 3 ? step[1] : step[0] ;
@@ -13,7 +14,7 @@ const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) 
         }
         
     })
-    const {postToShoppingCart} = cartStore;
+
     function clickPlus(){
         setCount((count)=>count + 1)
         setPrice(()=>initialPrice * (count+1))
@@ -26,6 +27,47 @@ const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) 
         let newCount = +e.target.value;
         setCount(newCount)
     }
+
+    const{setGlobalState}=useContext(GlobalStateContext);
+
+    function postToShoppingCart(title,img,amount,price,id,category){
+        setGlobalState((prevCart)=>{
+            const foundIndex = prevCart.shoppingCartArr.findIndex(element => element.id === id);
+            if (foundIndex !== -1) {
+                 const updatedCart = [...prevCart.shoppingCartArr];
+            //     updatedCart[foundIndex] = {
+            //       ...updatedCart[foundIndex],
+            //       price: updatedCart[foundIndex].price + price,
+            //       amount: updatedCart[foundIndex].amount + amount
+            //     };
+                 return {
+                   ...prevCart,
+                   shoppingCartArr: updatedCart
+                 };
+              }else{
+                const updatedCart = [...prevCart.shoppingCartArr, {
+                    title: title,
+                    img: img,
+                    amount: amount,
+                    initialAmount : amount,
+                    price: price,
+                    standartPrice: price,
+                    id: id,
+                    category: category,
+                    stepVariant : step,
+                    
+                }]
+                
+                return {
+                    ...prevCart,
+                    shoppingCartArr: updatedCart
+                    }
+                
+              }
+             
+        })
+    }
+
     return(
         <div className="w-full h-12 mt-5  bg-black rounded-[10px]">
             {!step && <div className="flex h-full justify-between items-center">
@@ -43,7 +85,7 @@ const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) 
                 }
                 </div>     
             }
-            <button className=" w-full h-12 mt-5 flex justify-center gap-3 items-center text-[19px] text-white rounded-[10px] font-semibold bg-[#0E8388]" onClick={()=> postToShoppingCart(title,img,count,price,id,category)}><span>В кошик</span><Image src='little-cart.svg' width={30} height={30} alt='Shopping cart' /></button>
+            <button className=" w-full h-12 mt-5 flex justify-center gap-3 items-center text-[19px] text-white rounded-[10px] font-semibold bg-[#0E8388]" onClick={()=> postToShoppingCart(title,img,count,price,id,category,step)}><span>В кошик</span><Image src='little-cart.svg' width={30} height={30} alt='Shopping cart' /></button>
         </div>
     )
 }
