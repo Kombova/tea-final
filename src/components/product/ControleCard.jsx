@@ -76,7 +76,7 @@ const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category,fu
                 <button className="text-[40px] text-white text-center grow " onClick={()=>clickPlus()}>+</button>
             </div>}
 
-            {step &&  <div className={`${full ? 'w-[300px]' : 'w-full'} w-full  flex h-12 bg-black justify-evenly items-center text-white text-[16px] font-medium rounded-[10px]`}>
+            {step &&  <div className={`${full ? 'w-[300px]' : 'w-full'}  flex h-12 bg-black justify-evenly items-center text-white text-[16px] font-medium rounded-[10px]`}>
                 {step.map((step)=>{
                         if(count === +step){
                             return <button key={Math.random()} className="bg-white text-black w-[85px] h-5/6 rounded-[10px]">{step} гр</button>
