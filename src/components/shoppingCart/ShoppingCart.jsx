@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GlobalStateContext } from "@/context/GlobalState";
 import MiniShoppingCart from "./MiniShoppingCart";
@@ -11,15 +11,27 @@ const ShoppingCart = () => {
     let{globalState,setGlobalState}=useContext(GlobalStateContext);
     const grivnaSymbol = "\u20B4";
 
-    useEffect(() => {
-        // globalState.shoppingCartArr.length > 0 && setShowShoppingCart(true)
-        
+    useEffect(() => { 
         let totalSum = 0;
         globalState.shoppingCartArr.forEach((element) => {
           totalSum += element.price;
         });
         setSum(totalSum);
       }, [globalState.shoppingCartArr]);
+    useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+    }, []);
+
+    const blockRef = useRef(null);
+    const handleClickOutside = (event) => {
+    if (blockRef.current && !blockRef.current.contains(event.target)) {
+        setShowShoppingCart(false)
+    }
+    };
     
     function RemoveFromtheShoppingCart(id){
         setGlobalState((prevCart) => {
@@ -63,8 +75,8 @@ const ShoppingCart = () => {
     }
     
     return(
-        <div className="flex items-center h-full ">
-            <div className={`relative flex items-center w-[50px] h-full ml-auto mr-0 ${showShoppingCart ? 'bg-slate-200' : null} cursor-pointer`} onClick={()=> setShowShoppingCart(!showShoppingCart)}>
+        <div className="flex items-center h-full " ref={blockRef}>
+            <div className={`relative flex items-center w-[50px] h-full ml-auto mr-0  cursor-pointer`} onClick={()=> setShowShoppingCart(!showShoppingCart)}>
                 <Image src={'/shopping-cart.svg'} width={44} height={44} alt="Shopping Cart"/>
                 <div className="absolute bottom-[3px] left-[-10px] w-7 h-7 rounded-[100%] bg-[#0E8388] text-[white] text-[18px] font-semibold flex justify-center items-center">{globalState.shoppingCartArr.length}</div>
             </div>

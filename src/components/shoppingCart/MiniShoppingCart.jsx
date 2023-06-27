@@ -1,8 +1,8 @@
 'use client';
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { GlobalStateContext } from "@/context/GlobalState";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 let counterShoppingArr = 0;
 const MiniShoppingCart = () =>{
@@ -13,11 +13,13 @@ const MiniShoppingCart = () =>{
             setShowMiniShoppingCart(true);
         }
         counterShoppingArr = globalState.shoppingCartArr.length
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             setShowMiniShoppingCart(false)
-        }, 2000);
-        
+        }, 2000); 
+        return () =>clearTimeout(timer);  
     },[globalState.shoppingCartArr.length])
+   
+
     const grivnaSymbol = "\u20B4";
     let isMobileDevice;
     typeof window !== 'undefined' ?  isMobileDevice = window.innerWidth <= 768 : null
@@ -29,14 +31,15 @@ const MiniShoppingCart = () =>{
             
             <AnimatePresence>    
                 { showMiniShoppingCart && !isMobileDevice &&
+                
                     <ul className="mt-[75px] w-96  absolute top-0 right-0   py-1 px-2 flex flex-col gap-1 overflow-x-hidden">
                         {globalState.shoppingCartArr.map((item,index)=>{
                                     return(
-                                        <motion.li key={Math.random()} className="w-full p-1  flex  justify-between items-center gap-1  pr-2 border-[1px] bg-slate-100 border-[grey] rounded"
+                                        <motion.li  key={Math.random()} className="w-full p-1  flex  justify-between items-center gap-1  pr-2 border-[1px] bg-slate-100 border-[grey] rounded"
                                         initial={{translateX:'100%' }}
                                         animate={{translateX:'0%',overflow: 'none'}}
                                         transition={{duration:0.5}}
-                                        exit={{opacity:0}}
+                                        exit={{opacity:0,translateX:'100%'}}
                                         
                                     >
                                         <Image className="" src={item.img} width={50} height={25} alt={item.title}/>
@@ -49,7 +52,7 @@ const MiniShoppingCart = () =>{
                         })
                         }
                     </ul>
-                
+               
                 }
                 { showMiniShoppingCart && isMobileDevice &&
                     <ul className="mt-[75px] w-full  absolute top-0 right-0   py-1 px-2 flex flex-col gap-1 overflow-x-hidden">
