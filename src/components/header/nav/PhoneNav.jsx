@@ -11,7 +11,7 @@ const PhoneNav = () =>{
     const[viewNav,setViewNav]=useState(false);
     
     function clickOnButton(){
-            setViewNav(false)
+            setViewNav(!viewNav)
     }
 
     return(

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { GlobalStateContext } from "@/context/GlobalState";
 
 
-const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) =>{
+const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category,full}) =>{
     let startCount = !step ? 1 : step.length === 3 ? step[1] : step[0] ;
     const[count,setCount]=useState(+startCount);
     useEffect(()=>{
@@ -69,14 +69,14 @@ const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) 
     }
 
     return(
-        <div className="w-full h-12 mt-5  bg-black rounded-[10px]">
-            {!step && <div className="flex h-full justify-between items-center">
+        <div className="flex opacity-80 justify-center gap-2 flex-wrap mt-5 ">
+            {!step && <div className={`${full ? 'w-[300px]' : 'w-full'}  flex h-12 bg-black justify-between items-center rounded-[10px]`}>
                 <button className="text-[40px] text-white text-center grow " onClick={()=>clickMinus()}>-</button>
                 <div className="bg-white w-[130px] h-5/6 rounded-[10px] text-[20px] font-medium flex items-center justify-center gap-2 text-center ">{+count}<span>шт</span> </div>
                 <button className="text-[40px] text-white text-center grow " onClick={()=>clickPlus()}>+</button>
             </div>}
 
-            {step &&  <div className="flex h-full justify-evenly items-center text-white text-[16px] font-medium">
+            {step &&  <div className={`${full ? 'w-[300px]' : 'w-full'} w-full  flex h-12 bg-black justify-evenly items-center text-white text-[16px] font-medium rounded-[10px]`}>
                 {step.map((step)=>{
                         if(count === +step){
                             return <button key={Math.random()} className="bg-white text-black w-[85px] h-5/6 rounded-[10px]">{step} гр</button>
@@ -85,7 +85,7 @@ const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category}) 
                 }
                 </div>     
             }
-            <button className=" w-full h-12 mt-5 flex justify-center gap-3 items-center text-[19px] text-white rounded-[10px] font-semibold bg-[#0E8388]" onClick={()=> postToShoppingCart(title,img,count,price,id,category,step)}><span>В кошик</span><Image src='little-cart.svg' width={30} height={30} alt='Shopping cart' /></button>
+            <button className={`${full ? 'w-[300px]' : 'w-full'} h-12   flex justify-center gap-3 items-center text-[19px] text-white rounded-[10px] font-semibold bg-[#0E8388]`} onClick={()=> postToShoppingCart(title,img,count,price,id,category,step)}><span>В кошик</span><Image src='little-cart.svg' width={30} height={30} alt='Shopping cart' /></button>
         </div>
     )
 }
