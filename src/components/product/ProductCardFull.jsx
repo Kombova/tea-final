@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import ControleCard from "./ControleCard";
 const ProductCardFull = ({product}) =>{
-//product.fields
 const[picture,setPicture]=useState(`http:${product.fields.mainImg.fields.file.url}`);
 const[price,setPrice]=useState(+product.fields.price)
 // console.log(product.fields.arrImg[0].fields.file.url)
@@ -18,7 +17,7 @@ const[price,setPrice]=useState(+product.fields.price)
                     <ul className="flex max-sm:justify-center gap-2 mt-2 ">
                         {
                             product.fields.arrImg.map((item)=>{
-                                return <li onClick={(e)=>setPicture(`http:${item.fields.file.url}`)} className="border-[1px] border-soild border-[grey] relative w-full h-[100px] cursor-pointer" key={item.fields.file.url}><Image  src={`http:${item.fields.file.url}`} fill={true} alt={'Зображення продукту'}/></li>
+                                return <li onClick={(e)=>setPicture(`http:${item.fields.file.url}`)} className="border-[1px] max-sm:border-0 border-soild border-[grey] relative w-full h-[100px] cursor-pointer" key={item.fields.file.url}><Image  src={`http:${item.fields.file.url}`} fill={true} alt={'Зображення продукту'}/></li>
                             })
                         }
                     </ul>
