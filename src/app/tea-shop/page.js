@@ -1,10 +1,12 @@
-export default async function TeaShop(){
+import ShowCategories from "@/components/categories/ShowCategories";
+import getProducts from "@/service/service";
+import TeaShop from "@/components/tea-shop/TeaShop";
+export default async function TeaStore(){
+    const productsArr = await getProducts(); 
     return(
         <>
-            {/* <ul className="w-full flex justify-center gap-10">
-                {allProduct.map((item)=> (<ProductCard product = {item}/>))}
-            </ul>  */}
-            <h1>Ще не готово ...</h1>
+            <h1 className='mt-10 max-w-[500px] mx-auto text-[36px] text-center px-[2px] border-t-2 border-b-2 border-[black]'>Чай</h1>
+            <TeaShop productsArr={productsArr} />
         </>
     )
 } 

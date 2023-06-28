@@ -7,7 +7,7 @@ const Footer = () =>{
     
     return(
         <footer className="w-full min-h-[100px] bg-[#221F1F] text-slate-400">
-            <div className="flex justify-between  max-sm:flex-col max-sm:items-center  flex-wrap max-w-7xl mx-auto py-3 px-2">
+            <div className="flex justify-between  max-sm:flex-col max-sm:items-center  flex-wrap max-w-7xl mx-auto py-3 px-2 max-xl:px-2">
                 <section className="">
                     <nav className="max-sm:hidden">
                         <ul>

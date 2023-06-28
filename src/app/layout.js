@@ -34,9 +34,9 @@ export default async function RootLayout({ children }) {
     <html>
       <body className={montserrat.className}>
         <GlobalStateProvider>
-          <div className='w-full min-h-screen relative'>
+          <div className='w-full relative'>
             <Header fetchLogo={fetchLogo[0].fields.logo.fields.file.url}/>
-              <main className=' max-w-7xl mx-auto my-6'>
+              <main className=' min-h-screen max-w-7xl mx-auto my-6 max-xl:px-2'>
                 {children}
               </main>
             <Footer/>

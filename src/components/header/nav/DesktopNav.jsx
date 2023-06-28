@@ -31,10 +31,6 @@ const DesktopNav = () =>{
                     <li  className="relative p-1" onClick={(e)=>{activateNav(e)}}><Link  href='/about-us'>О нас</Link>
                         {pageNow === '/about-us' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute left-0 bottom-0"></motion.div> : null}
                     </li>
-                
-                    <li  className="relative p-1" onClick={(e)=>{activateNav(e)}}><Link  href='/delivery'>Доставка</Link>
-                        {pageNow === '/delivery' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute left-0 bottom-0"></motion.div> : null}
-                    </li>
                     <li  className="relative p-1" onClick={(e)=>{activateNav(e)}}><Link  href='/blog'>Блог</Link>
                         {pageNow === '/blog' ? <motion.div layoutId="line" className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute left-0 bottom-0"></motion.div> : null}
                     </li>   
