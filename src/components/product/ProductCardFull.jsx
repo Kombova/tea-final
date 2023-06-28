@@ -35,9 +35,9 @@ const[price,setPrice]=useState(+product.fields.price)
 
 
 
-                <section className=" basis-2/4 p-2">
+                <section className="max-sm:basis-0 max-sm:w-full basis-2/4 p-2">
                     <h1 className="py-2  text-left text-[20px] font-medium truncate overflow-hidden border-b-[1px] border-solid border-[grey]">{product.fields.title}</h1>
-                    <div className="py-4 w-52">
+                    <div className="py-4 w-52 ">
                         <h3 className="flex gap-1 items-center" ><Image src={'/leaf.svg'} width={20} height={20} alt="Тип"/>{product.fields.category.fields.type}</h3>
                         <p className="flex gap-1 items-center">
                             {product.fields.country === 'Ukraine' && <Image src={'/ukraine-flag.svg'} width={20} height={20} alt="флаг"/>}
