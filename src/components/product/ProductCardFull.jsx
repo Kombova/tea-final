@@ -11,7 +11,7 @@ const[price,setPrice]=useState(+product.fields.price)
         <div className="w-full overflow-y-hidden">
             <div className="flex flex-wrap justify-center">
                 <section className="max-sm:basis-0 basis-2/4 p-4 max-sm:p-0">
-                    <div className="mx-auto relative w-full h-[500px] max-sm:w-screen max-sm:h-80 max-sm:border-0 border-[1px] border-soild border-[grey]">
+                    <div className="mx-auto relative w-full h-[500px] max-sm:w-full max-sm:h-80 max-sm:border-0 border-[1px] border-soild border-[grey]">
                         <Image className=" top-0 left-0 object-cover" src={picture} fill={true} alt={'Зображення продукту'}/>
                     </div>
                     <ul className="flex max-sm:justify-center gap-2 mt-2 ">

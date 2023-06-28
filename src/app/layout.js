@@ -1,6 +1,7 @@
 import './globals.css';
 import { Montserrat } from 'next/font/google';
 import Header from '@/components/header/Header';
+import Footer from '@/components/footer/Footer';
 import client from '@/contentful';
 import GlobalStateProvider from '@/context/GlobalState';
 const montserrat = Montserrat({ subsets: ['latin','cyrillic','cyrillic-ext'] });
@@ -35,9 +36,10 @@ export default async function RootLayout({ children }) {
         <GlobalStateProvider>
           <div className='w-full min-h-screen relative'>
             <Header fetchLogo={fetchLogo[0].fields.logo.fields.file.url}/>
-            <main className=' max-w-7xl mx-auto my-6'>
-              {children}
-            </main>
+              <main className=' max-w-7xl mx-auto my-6'>
+                {children}
+              </main>
+            <Footer/>
           </div>
         </GlobalStateProvider>
       </body>
