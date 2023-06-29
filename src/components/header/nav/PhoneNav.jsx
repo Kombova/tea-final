@@ -12,6 +12,7 @@ const PhoneNav = () =>{
     
     function clickOnButton(){
             setViewNav(!viewNav)
+            viewNav ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
     }
 
     return(

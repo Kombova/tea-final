@@ -120,7 +120,7 @@ const ShoppingCart = () => {
                     {globalState.shoppingCartArr.length !== 0 &&
                         <div className=" py-4 px-3 max-md:fixed max-md:bottom-[10px] max-md:w-full">
                             <div className=" flex justify-between ">Загальна сумма : <span className=" font-semibold">{grivnaSymbol} {sum}</span></div>
-                            <button onClick={()=>setShowOrderForm(true)} className=" w-5/6 h-12 mt-5 mx-auto flex justify-center items-center text-[19px] text-white opacity-80 hover:opacity-100 rounded-[10px] font-semibold bg-[#0E8388]"><span>Придбати</span></button>
+                            <button onClick={()=>{setShowOrderForm(true); document.body.style.overflow = 'hidden'}} className=" w-5/6 h-12 mt-5 mx-auto flex justify-center items-center text-[19px] text-white opacity-80 hover:opacity-100 rounded-[10px] font-semibold bg-[#0E8388]"><span>Придбати</span></button>
                         </div>
                     
                     }
