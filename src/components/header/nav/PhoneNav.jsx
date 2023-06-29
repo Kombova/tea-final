@@ -9,10 +9,10 @@ import Image from "next/image";
 
 const PhoneNav = () =>{
     const[viewNav,setViewNav]=useState(false);
+    viewNav ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
     
     function clickOnButton(){
             setViewNav(!viewNav)
-            viewNav ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
     }
 
     return(
