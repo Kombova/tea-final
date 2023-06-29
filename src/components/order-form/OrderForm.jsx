@@ -67,7 +67,7 @@ const OrderForm = ({setState}) =>{
     });
     message += ` Сумма заказа: <b> ${sum} грн</b>\n\n`
         try{
-            const response =await fetch('http://localhost:3000/api/telegram',{
+            const response =await fetch('/api/telegram',{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -85,16 +85,11 @@ const OrderForm = ({setState}) =>{
           } 
   };
 
-
-
-
-  
     return(
         <Formik
     initialValues={initialValues}
     validate={validateForm}
     onSubmit={handleSubmit}
-    
   >
     {({ isSubmitting }) => (
       <Form className='absolute flex w-screen h-screen top-0 left-0 bg-black bg-opacity-70 z-50'>
