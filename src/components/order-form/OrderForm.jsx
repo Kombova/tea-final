@@ -47,7 +47,7 @@ const OrderForm = ({setState}) =>{
   let{globalState}=useContext(GlobalStateContext);
   const handleSubmit = async(values, { setSubmitting }) => {
 
-    let message = '<b>ЗАКАЗ</b>\n\n\n';
+    let message = '             <b>ЗАКАЗ</b>\n\n\n';
     message += `\u{1F603} Имя: <b>${values.firstName}</b>\n\n`
     message += `\u{1F60F} Фамилия: <b>${values.lastName}</b>\n\n`
     message += `\u{1F4F1} Телефон: <b>${values.phoneNumber}</b>\n\n`
@@ -65,7 +65,7 @@ const OrderForm = ({setState}) =>{
       message += `~~~~~~~~~~~~~~~ \n\n`
       sum += element.price
     });
-    message += ` Сумма заказа: <b> ${sum} грн</b>\n\n`
+    message += `Сумма заказа: <b> ${sum} грн</b>\n\n`
         try{
             const response =await fetch('/api/telegram',{
                 method: 'POST',
