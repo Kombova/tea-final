@@ -31,6 +31,5 @@ export async function POST(request) {
         return NextResponse.json('Ошибка при отправке запроса в Telegram API:', error)
       }
 
-    // const res = await request.json()
-    // return NextResponse.json('Nice!')
+
   }

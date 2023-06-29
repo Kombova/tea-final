@@ -22,14 +22,8 @@ const getSiteControle = async ()=>{
 }
 
 export default async function RootLayout({ children }) {
-  
-    
-    // let siteManagement = await getSaiteControle();
-    
-    
-  let fetchLogo = await getSiteControle();
-  
-  
+     
+let fetchLogo = await getSiteControle();
   return (
     <html>
       <body className={montserrat.className}>

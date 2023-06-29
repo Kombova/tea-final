@@ -56,7 +56,7 @@ const OrderForm = ({setState}) =>{
     message += `*******************\n\n`
     let sum=0;
     globalState.shoppingCartArr.forEach(element => {
-      message += `\<b>Название:</b>\n`
+      message += `<b>Название:</b>\n`
       message += `${element.title}\n\n`
       message += `<b>Количество:</b>\n`
       message += `${element.amount}\n\n`

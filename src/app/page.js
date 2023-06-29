@@ -1,7 +1,5 @@
-
 import client from '@/contentful';
 import Slider from '@/components/slider/Slider';
-import ProductCard from '@/components/product/ProductCard';
 import getProducts from '@/service/service';
 import ShowCategories from '@/components/categories/ShowCategories';
 const getSliderImgArr = async ()=>{
