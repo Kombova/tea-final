@@ -41,31 +41,31 @@ const initialValues = {
     return errors;
   };
   
+  
 
 const OrderForm = ({setState}) =>{
   let{globalState}=useContext(GlobalStateContext);
   const handleSubmit = async(values, { setSubmitting }) => {
    
-    let message = `  <b>ЗАКАЗ</b> \\n\\n\\n `;
-    message += `u{1F603} Имя: <b>${values.firstName}</b>\\n\\n `
-    message += `u{1F60F} Фамилия: <b>${values.lastName}</b>\\n\\n `
-    message += `u{1F4F1} Телефон: <b>${values.phoneNumber}</b>\\n\\n ` 
-    message += `u{1F69A} Почта: <b>${values.methodDelivery}</b>\\n\\n `
-    message += `u{1F3E2} Отделение: <b>${values.postOfficeNumber}</b>\\n\\n `
-    message += `*********************\n\n `
+    let message = `  <b>ЗАКАЗ</b>\n\n\n`;
+    message += `\u{1F603} Имя: <b>${values.firstName}</b>\n\n`
+    message += `\u{1F60F} Фамилия: <b>${values.lastName}</b>\n\n`
+    message += `\u{1F4F1} Телефон: <b>${values.phoneNumber}</b>\n\n`
+    message += `\u{1F69A} Почта: <b>${values.methodDelivery}</b>\n\n`
+    message += `\u{1F3E2} Отделение: <b>${values.postOfficeNumber}</b>\n\n`
+    message += `*******************\n\n`
     let sum=0;
     globalState.shoppingCartArr.forEach(element => {
-      message += `<b>Название:</b>\\n `
-      message += `${element.title}\\n\\n `
-      message += `<b>Количество:</b>\\n `
-      message += `${element.amount}\\n\\n `
-      message += `<b>Цена:</b>\\n`
-      message += `${element.price} грн\\n\\n `
-      message += `~~~~~~~~~~~~~~~ \\n\\n` 
+      message += `<b>Название:</b>\n`
+      message += `${element.title}\n\n`
+      message += `<b>Количество:</b>\n`
+      message += `${element.amount}\n\n`
+      message += `<b>Цена:</b>\n`
+      message += `${element.price} грн\n\n`
+      message += `~~~~~~~~~~~~~~~ \n\n`
       sum += element.price
     });
-    message += `Сумма заказа: <b> ${sum} грн</b>\\n\\n `
-    
+    message += `Сумма заказа: <b> ${sum} грн</b>\n\n`
         try{
             const response =await fetch('/api/telegram',{
                 method: 'POST',
@@ -97,7 +97,7 @@ const OrderForm = ({setState}) =>{
         <button className='absolute top-[20px] right-[20px]' onClick={()=>setState(false)}><Image src='cancel.svg' width={20} height={20} alt='Exit' /></button>
             <div className='flex items-center  h-full w-[300px] mx-auto py-10  flex-wrap'>
                 <div className='w-full  flex flex-col'>
-                    <label htmlFor="firstName">Ім'я:</label>
+                    <label htmlFor="firstName">Ім&apos;я:</label>
                     <Field className=' border border-solid border-[grey] rounded-xl px-2 text-center' type="text" id="firstName" name="firstName" />
                     <ErrorMessage name="firstName" component="div" className="text-red-500"/>
                 </div>
