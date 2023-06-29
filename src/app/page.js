@@ -12,6 +12,7 @@ const getSliderImgArr = async ()=>{
 }
 
 export default async function Home(){
+  
   const sliderImgArr = await getSliderImgArr();
   const sliderArr= sliderImgArr[0].fields.slider.map((item)=>{
     return  item.fields.file.url

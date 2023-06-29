@@ -5,7 +5,6 @@ import ControleCard from "./ControleCard";
 const ProductCardFull = ({product}) =>{
 const[picture,setPicture]=useState(`http:${product.fields.mainImg.fields.file.url}`);
 const[price,setPrice]=useState(+product.fields.price)
-// console.log(product.fields.arrImg[0].fields.file.url)
 
     return(
         <div className="w-full overflow-y-hidden">
@@ -41,7 +40,7 @@ const[price,setPrice]=useState(+product.fields.price)
                         <h3 className="flex gap-1 items-center" ><Image src={'/leaf.svg'} width={20} height={20} alt="Тип"/>{product.fields.category.fields.type}</h3>
                         <p className="flex gap-1 items-center">
                             {product.fields.country === 'Ukraine' && <Image src={'/ukraine-flag.svg'} width={20} height={20} alt="флаг"/>}
-                            {product.fields.country === 'Japan' && <Image src={'/jspsn-flag.svg'} width={20} height={20} alt="флаг"/>}
+                            {product.fields.country === 'Japan' && <Image src={'/japan-flag.svg'} width={20} height={20} alt="флаг"/>}
                             {product.fields.country === 'China' && <Image src={'/china-flag.svg'} width={20} height={20} alt="флаг"/>}
                             {product.fields.country === 'Taiwan' && <Image src={'/taiwan-flag.svg'} width={20} height={20} alt="флаг"/>}
                         {product.fields.country}</p>

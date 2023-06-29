@@ -13,6 +13,7 @@
     "contentful": "^10.2.3",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
+    "formik": "^2.4.2",
     "framer-motion": "^10.12.12",
     "next": "13.4.3",
     "postcss": "8.4.23",

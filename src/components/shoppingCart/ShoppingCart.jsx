@@ -5,9 +5,12 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GlobalStateContext } from "@/context/GlobalState";
 import MiniShoppingCart from "./MiniShoppingCart";
+import OrderForm from "../order-form/OrderForm";
+
 const ShoppingCart = () => {
     const[showShoppingCart,setShowShoppingCart]=useState(false);
     const[sum,setSum]=useState(0);
+    const[showOrderForm,setShowOrderForm] = useState(false);
     let{globalState,setGlobalState}=useContext(GlobalStateContext);
     const grivnaSymbol = "\u20B4";
 
@@ -117,7 +120,7 @@ const ShoppingCart = () => {
                     {globalState.shoppingCartArr.length !== 0 &&
                         <div className=" py-4 px-3 max-md:fixed max-md:bottom-[10px] max-md:w-full">
                             <div className=" flex justify-between ">Загальна сумма : <span className=" font-semibold">{grivnaSymbol} {sum}</span></div>
-                            <button className=" w-5/6 h-12 mt-5 mx-auto flex justify-center items-center text-[19px] text-white opacity-80 hover:opacity-100 rounded-[10px] font-semibold bg-[#0E8388]"><span>Придбати</span></button>
+                            <button onClick={()=>setShowOrderForm(true)} className=" w-5/6 h-12 mt-5 mx-auto flex justify-center items-center text-[19px] text-white opacity-80 hover:opacity-100 rounded-[10px] font-semibold bg-[#0E8388]"><span>Придбати</span></button>
                         </div>
                     
                     }
@@ -126,6 +129,8 @@ const ShoppingCart = () => {
             }
             </AnimatePresence>
             <MiniShoppingCart/>
+
+            {showOrderForm && <OrderForm setState={setShowOrderForm}/>}
         </div>       
     )
 }
