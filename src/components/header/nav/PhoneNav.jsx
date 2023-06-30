@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { GlobalStateContext } from "@/context/GlobalState";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from "next/image";
+
 
 
     
@@ -13,19 +15,25 @@ const PhoneNav = () =>{
     const[viewNav,setViewNav]=useState(false);
     const[showTeaNav,setShowTeaNav]=useState(false)
     let{globalState,setGlobalState}=useContext(GlobalStateContext)
+    const router = useRouter()
     typeof window !== 'undefined' && viewNav ? document.body.style.overflow = 'hidden' : null; 
     
+
+
+
     function clickOnButton(){
         document.body.style.overflow = 'auto'
         setViewNav(!viewNav)
     }
     function clickMenu(e){
 
-       setGlobalState((prevState) => ({
-        ...prevState,
-        selectedMenu: e.target.innerText,
-      }));  
-      document.body.style.overflow = 'auto'
+        setGlobalState((prevState) => ({
+            ...prevState,
+            selectedMenu: e.target.innerText,
+        }));  
+        document.body.style.overflow = 'auto'
+        router.push('/tea-shop')
+      
         setViewNav(!viewNav)
 
     }
@@ -56,11 +64,11 @@ const PhoneNav = () =>{
                                         {showTeaNav &&
                                             <li className="w-full ">
                                                 <ul className="w-full flex flex-col items-center  border-b-[1px] border-solid border-[grey]">
-                                                    <li className=''onClick={(e)=>clickMenu(e)}><Link href={'/tea-shop'}>Усі</Link></li>
-                                                    <li onClick={(e)=>clickMenu(e)}><Link href={'/tea-shop'}>Шу Пуер</Link></li>
-                                                    <li><Link href={'/tea-shop'}>Шен Пуер</Link></li>
-                                                    <li><Link href={'/tea-shop'}>Червоний</Link></li>
-                                                    <li><Link href={'/tea-shop'}>Улун</Link></li>
+                                                    <li className=''onClick={(e)=>clickMenu(e)}>Усі</li>
+                                                    <li onClick={(e)=>clickMenu(e)}>Шу Пуер</li>
+                                                    <li onClick={(e)=>clickMenu(e)}>Шен Пуер</li>
+                                                    <li onClick={(e)=>clickMenu(e)}>Червоний</li>
+                                                    <li onClick={(e)=>clickMenu(e)}>Улун</li>
                                                 </ul>
                                             </li>           
                                         }
