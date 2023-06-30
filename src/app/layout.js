@@ -28,9 +28,9 @@ let fetchLogo = await getSiteControle();
     <html>
       <body className={montserrat.className}>
         <GlobalStateProvider>
-          <div className='w-full relative'>
+          <div className='w-full'>
             <Header fetchLogo={fetchLogo[0].fields.logo.fields.file.url}/>
-              <main className=' min-h-screen max-w-7xl mx-auto my-6 max-xl:px-2'>
+              <main className=' min-h-screen max-w-7xl mx-auto mt-[75px] py-6'>
                 {children}
               </main>
             <Footer/>

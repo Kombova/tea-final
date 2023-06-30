@@ -102,7 +102,7 @@ const OrderForm = ({setState}) =>{
     {({ isSubmitting }) => (
       <Form className='absolute flex w-screen h-screen top-0 left-0 bg-black bg-opacity-70 z-50 overflow-hidden'>
         {showResponse ? <ResponseOrder/> :
-          <div className='relative w-[500px] h-[500px] max-sm:w-full max-sm:h-full  mx-auto my-auto justify-center bg-slate-50 rounded-xl border border-solid border-[grey]'>
+          <div className='relative w-[500px] h-[500px] max-sm:w-full  mx-auto my-auto justify-center bg-slate-50 rounded-xl border border-solid border-[grey]'>
           <button className='absolute top-[20px] right-[20px]' onClick={()=>{setState(false);document.body.style.overflow = 'auto'}}><Image src='cancel.svg' width={20} height={20} alt='Exit' /></button>
               <div className='flex items-center  h-full w-[300px] mx-auto py-10  flex-wrap'>
                   <div className='w-full  flex flex-col'>
