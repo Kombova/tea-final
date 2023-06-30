@@ -50,12 +50,12 @@ const PhoneNav = () =>{
                                     transition={{duration:0.5}}
                                     >
                                     
-                                    <ul className=" flex flex-col items-center p-5">
+                                    <ul className=" flex flex-col items-start p-5">
                                         <li className="  pb-2 " onClick={()=>clickOnButton()}><Link className="w-full" href={'/'}>Головна</Link></li>
-                                        <li className={`${showTeaNav ? 'w-full border-t-[1px] border-solid border-[grey] bg-slate-400 bg-opacity-70' : ''}  flex justify-center gap-2 items-center`} onClick={()=>setShowTeaNav(!showTeaNav)}>Чай<span>+</span></li>
+                                        <li className={`${showTeaNav ? 'w-full border-t-[1px] border-solid border-[grey] bg-slate-400 bg-opacity-70' : ''}  flex justify-start gap-2 items-start`} onClick={()=>setShowTeaNav(!showTeaNav)}>Чай<span>+</span></li>
                                         {showTeaNav &&
                                             <li className="w-full ">
-                                                <ul className="w-full flex flex-col  border-b-[1px] border-solid border-[grey]">
+                                                <ul className="w-full flex flex-col items-center  border-b-[1px] border-solid border-[grey]">
                                                     <li className=''onClick={(e)=>clickMenu(e)}><Link href={'/tea-shop'}>Усі</Link></li>
                                                     <li onClick={(e)=>clickMenu(e)}><Link href={'/tea-shop'}>Шу Пуер</Link></li>
                                                     <li><Link href={'/tea-shop'}>Шен Пуер</Link></li>
