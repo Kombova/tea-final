@@ -6,7 +6,7 @@ export const GlobalStateContext=createContext();
 
 
 const GlobalStateProvider = ({children}) =>{
-    const[globalState,setGlobalState]=useState({shoppingCartArr: [] });
+    const[globalState,setGlobalState]=useState({shoppingCartArr: [],selectedMenu:'Усі' });
     let useGlobalState={
         globalState,
         setGlobalState

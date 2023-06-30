@@ -1,4 +1,3 @@
-import ShowCategories from "@/components/categories/ShowCategories";
 import getProducts from "@/service/service";
 import TeaShop from "@/components/tea-shop/TeaShop";
 export default async function TeaStore(){
