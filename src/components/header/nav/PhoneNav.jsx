@@ -1,5 +1,7 @@
 'use client'
 import { useState } from "react";
+import { useContext } from "react";
+import { GlobalStateContext } from "@/context/GlobalState";
 import Link from "next/link";
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from "next/image";
@@ -9,11 +11,23 @@ import Image from "next/image";
 
 const PhoneNav = () =>{
     const[viewNav,setViewNav]=useState(false);
+    const[showTeaNav,setShowTeaNav]=useState(false)
+    let{globalState,setGlobalState}=useContext(GlobalStateContext)
     typeof window !== 'undefined' && viewNav ? document.body.style.overflow = 'hidden' : null; 
     
     function clickOnButton(){
         document.body.style.overflow = 'auto'
-            setViewNav(!viewNav)
+        setViewNav(!viewNav)
+    }
+    function clickMenu(e){
+
+       setGlobalState((prevState) => ({
+        ...prevState,
+        selectedMenu: e.target.innerText,
+      }));  
+      document.body.style.overflow = 'auto'
+        setViewNav(!viewNav)
+
     }
 
     return(
@@ -29,20 +43,31 @@ const PhoneNav = () =>{
                         viewNav &&
                             <>
                                 <motion.div 
-                                    className={` phone_nav w-[90%] z-50 h-screen absolute  left-0 top-0 py-[30px] pt-[60px] bg-slate-200   text-[25px] `}
+                                    className={` phone_nav w-[90%] z-50 h-screen absolute  left-0 top-0 py-[30px] pt-[60px] bg-[#c4d4d4]    text-[25px] `}
                                     initial={{translateX:'-100%' }}
                                     animate={{translateX:'0%',overflow: 'none'}}
                                     exit={{translateX:'-100%'}}
                                     transition={{duration:0.5}}
                                     >
                                     
-                                    <ul className=" flex flex-col p-5">
-                                        <li className="  border-b-2 border-solid border-black pb-2 " onClick={()=>clickOnButton()}><Link className="w-full" href={'/'}>Головна</Link></li>
-                                        <li className="  border-b-2 border-solid border-black pb-2" onClick={()=>clickOnButton()}><Link href={'/tea-shop'}>Чай</Link></li>
-                                        <li className="  border-b-2 border-solid border-black pb-2" onClick={()=>clickOnButton()}><Link href={'/teaware-shop'}>Посуд</Link></li>
-                                        <li className="  border-b-2 border-solid border-black pb-2" onClick={()=>clickOnButton()}><Link href={'/about-us'}>Про нас</Link></li>
-                                        <li className="   border-b-2 border-solid border-black pb-2" onClick={()=>clickOnButton()}><Link href={'/delivery'}>Доставка</Link></li>    
-                                        <li className="   border-b-2 border-solid border-black pb-2" onClick={()=>clickOnButton()}><Link href={'/'}>Блог</Link></li>
+                                    <ul className=" flex flex-col items-center p-5">
+                                        <li className="  pb-2 " onClick={()=>clickOnButton()}><Link className="w-full" href={'/'}>Головна</Link></li>
+                                        <li className={`${showTeaNav ? 'w-full border-t-[1px] border-solid border-[grey] bg-slate-400 bg-opacity-70' : ''}  flex justify-center gap-2 items-center`} onClick={()=>setShowTeaNav(!showTeaNav)}>Чай<span>+</span></li>
+                                        {showTeaNav &&
+                                            <li className="w-full ">
+                                                <ul className="w-full flex flex-col  border-b-[1px] border-solid border-[grey]">
+                                                    <li className=''onClick={(e)=>clickMenu(e)}><Link href={'/tea-shop'}>Усі</Link></li>
+                                                    <li onClick={(e)=>clickMenu(e)}><Link href={'/tea-shop'}>Шу Пуер</Link></li>
+                                                    <li><Link href={'/tea-shop'}>Шен Пуер</Link></li>
+                                                    <li><Link href={'/tea-shop'}>Червоний</Link></li>
+                                                    <li><Link href={'/tea-shop'}>Улун</Link></li>
+                                                </ul>
+                                            </li>           
+                                        }
+                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/teaware-shop'}>Посуд</Link></li>
+                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/about-us'}>Про нас</Link></li>
+                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/delivery'}>Доставка</Link></li>    
+                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/'}>Блог</Link></li>
                                     </ul>
                                                   
                                     <button className=" cancel_button w-[20px] h-[20px] absolute right-[20px] top-[20px]" onClick={()=>clickOnButton()}>
