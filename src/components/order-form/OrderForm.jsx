@@ -1,6 +1,8 @@
+'use client'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Image from 'next/image';
 import { useContext, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { GlobalStateContext } from '@/context/GlobalState';
 import ResponseOrder from './ResponseOrder';
 const initialValues = {
@@ -51,7 +53,11 @@ const initialValues = {
 const OrderForm = ({setState}) =>{
   const[showResponse,setShowResponse]=useState(false)
   const[showLoader,setShowLoader]=useState(false)
+  const[selectPost,setSelectPost]=useState('Нова Пошта')
+  const router = useRouter();
   let{globalState}=useContext(GlobalStateContext);
+
+
   const handleSubmit = async(values, { setSubmitting }) => {
     setShowLoader(true)
     // setShowResponse(true)
@@ -103,58 +109,60 @@ const OrderForm = ({setState}) =>{
     onSubmit={handleSubmit}
   >
     {({ isSubmitting }) => (
-      <Form className='absolute flex w-screen h-screen top-0 left-0 bg-black bg-opacity-70 z-50 overflow-hidden'>
+      <Form className=''>
         
         {showResponse ? <ResponseOrder/> :
-          <div className='relative w-[500px] h-[500px] max-sm:w-full  mx-auto my-auto justify-center bg-slate-50 rounded-xl border border-solid border-[grey]'>
-            {showLoader && 
-          
-            <Image className='absolute top-0 left-0 w-full h-full' src='/spinner.svg' width={100} height={100} alt='spinner' />
-          
-          }
-          <button className='absolute top-[20px] right-[20px]' onClick={()=>{setState(false);document.body.style.overflow = 'auto'}}><Image src='cancel.svg' width={20} height={20} alt='Exit' /></button>
-              <div className='flex items-center  h-full w-[300px] mx-auto py-10  flex-wrap'>
+          <div className=' relative p-4   justify-center  border-r-[1px] border-b-[1px] border-solid border-[grey]'>
+            <button className='absolute top-0 left-[20px]' onClick={()=>{router.back()}}><Image src='back.svg' width={20} height={20} alt='Exit' /></button>
+              <div className='flex items-center  w-[400px] max-[950px]:w-full py-10  flex-wrap'>
                   <div className='w-full  flex flex-col'>
                       <label htmlFor="firstName">Ім&apos;я:</label>
-                      <Field className=' border border-solid border-[grey] rounded-xl px-2 text-center' type="text" id="firstName" name="firstName" />
+                      <Field className=' border border-solid border-[grey] rounded px-2 text-center' type="text" id="firstName" name="firstName" />
                       <ErrorMessage name="firstName" component="div" className="text-red-500"/>
                   </div>
   
                   <div className='w-full  flex flex-col'>
                       <label htmlFor="lastName">Прізвище:</label>
-                      <Field className='border border-solid border-[grey] rounded-xl px-2 text-center' type="text" id="lastName" name="lastName" />
+                      <Field className='border border-solid border-[grey] rounded px-2 text-center' type="text" id="lastName" name="lastName" />
                       <ErrorMessage name="lastName" component="div" className="text-red-500"/>
                   </div>
                   <div className='w-full  flex flex-col'>
                       <label htmlFor="city">Місто:</label>
-                      <Field className='border border-solid border-[grey] rounded-xl px-2 text-center' type="text" id="city" name="city" />
+                      <Field className='border border-solid border-[grey] rounded px-2 text-center' type="text" id="city" name="city" />
                       <ErrorMessage name="city" component="div" className="text-red-500"/>
                   </div>
-                  <div>
+                  <p>Оберіть спосіб доставки:</p>
+                  <div className='flex justify-center gap-2 w-full'>
                       <div>
-                          <label >
-                              <Field className='mr-2' type="radio" name="methodDelivery" id='novaPoshta' value="novaPoshta" />
-                              Нова пошта
+                          <label className='w-[300px] relative h-[50px]'>
+                              <Field className='hidden' type="radio" name="methodDelivery" id='novaPoshta' value="novaPoshta" />
+                              <button onClick={()=> setSelectPost('Нова Пошта')}>
+                                <Image className={` ${selectPost === 'Нова Пошта' ? 'border-[#0E8388] border-[4px]' : 'border-black border'}  border-solid  rounded-lg hover:scale-110`} src='/nova-poshta.png' width={50} height={50} alt='Нова пошта'/>
+                              </button>
+                              
                           </label>
                       </div>
   
                       <div>
                           <label>
-                              <Field className='mr-2'  type="radio" name="methodDelivery" id='ukrPoshta' value="ukrPoshta" />
-                              Укр пошта
+                              <Field className='hidden'  type="radio" name="methodDelivery" id='ukrPoshta' value="ukrPoshta" />
+                              <button onClick={()=> setSelectPost('Укр Пошта')}>
+                                <Image className={`${selectPost === 'Укр Пошта' ? 'border-[#0E8388] border-[4px]' : 'border-black border'} border-solid  rounded-lg hover:scale-110`} src='/ukr-poshta.png' alt='Укр пошта' width={50} height={50} />
+                              </button>
+                              
                           </label>
                       </div>
                   </div>
   
                   <div className='w-full  flex flex-col'>
                       <label htmlFor="postOfficeNumber">Введіть номер відділення:</label>
-                      <Field className='border border-solid border-[grey] rounded-xl px-2 text-center' type="text" id="postOfficeNumber" name="postOfficeNumber" />
+                      <Field className='border border-solid border-[grey] rounded px-2 text-center' type="text" id="postOfficeNumber" name="postOfficeNumber" />
                       <ErrorMessage name="postOfficeNumber" component="div" className="text-red-500"/>
                   </div>
   
                   <div className='w-full  flex flex-col'>
                       <label htmlFor="phoneNumber">Номер телефону:</label>
-                      <Field className='border border-solid border-[grey] rounded-xl px-2 text-center' type="text" id="phoneNumber" name="phoneNumber" />
+                      <Field className='border border-solid border-[grey] rounded px-2 text-center' type="text" id="phoneNumber" name="phoneNumber" />
                       <ErrorMessage name="phoneNumber" component="div" className="text-red-500"/>
                   </div>
   
@@ -168,6 +176,9 @@ const OrderForm = ({setState}) =>{
       </Form>
     )}
   </Formik>
+  // {showLoader && <div><Image className='absolute top-0 left-0 w-full h-full' src='/spinner.svg' width={100} height={100} alt='spinner' /></div>
+  
+  // }
     )
 }
 

@@ -21,7 +21,7 @@ export default async function Home(){
  
   return (
     <> 
-      <Slider array={sliderArr} sliderLinks={sliderLink}/>
+      {/* <Slider array={sliderArr} sliderLinks={sliderLink}/> */}
       <h1 className='mt-20 max-w-[500px] mx-auto text-[36px] text-center px-[2px] border-t-2 border-b-2 border-[black]'>Новинки</h1>
       <ul className="w-full mt-20 flex flex-wrap justify-center gap-10">
                 <ShowCategories productsArr={allProduct} category='New' />
