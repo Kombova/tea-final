@@ -80,8 +80,8 @@ const ShoppingCart = () => {
     return(
         <div className="flex items-center h-full " ref={blockRef}>
             <div className={`relative flex items-center w-[50px] h-full ml-auto mr-0  cursor-pointer`} onClick={()=> setShowShoppingCart(!showShoppingCart)}>
-                <Image src={'/shopping-cart.svg'} width={44} height={44} alt="Shopping Cart"/>
-                <div className="absolute bottom-[3px] left-[-10px] w-7 h-7 rounded-[100%] bg-[#0E8388] text-[white] text-[18px] font-semibold flex justify-center items-center">{globalState.shoppingCartArr.length}</div>
+                <Image src={'/shopping-cart.svg'} width={35} height={35} alt="Shopping Cart"/>
+                <div className="absolute bottom-[13px] left-[-5px] w-5 h-5 rounded-[100%] bg-[#0E8388] text-[white] text-[14px] font-semibold flex justify-center items-center">{globalState.shoppingCartArr.length}</div>
             </div>
             
             <AnimatePresence>
@@ -119,7 +119,7 @@ const ShoppingCart = () => {
                     }
                     {globalState.shoppingCartArr.length !== 0 &&
                         <div className=" py-4 px-3 max-md:fixed max-md:bottom-[10px] max-md:w-full">
-                            <div className=" flex justify-between ">Загальна сумма : <span className=" font-semibold">{grivnaSymbol} {sum}</span></div>
+                            <div className=" min-[650px]:px-2 flex justify-between ">Загальна сумма : <span className=" font-semibold">{grivnaSymbol} {sum}</span></div>
                             <button onClick={()=>{setShowOrderForm(true); document.body.style.overflow = 'hidden'}} className=" w-5/6 h-12 mt-5 mx-auto flex justify-center items-center text-[19px] text-white opacity-80 hover:opacity-100 rounded-[10px] font-semibold bg-[#0E8388]"><span>Придбати</span></button>
                         </div>
                     

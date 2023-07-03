@@ -50,9 +50,12 @@ const initialValues = {
 
 const OrderForm = ({setState}) =>{
   const[showResponse,setShowResponse]=useState(false)
+  const[showLoader,setShowLoader]=useState(false)
   let{globalState}=useContext(GlobalStateContext);
   const handleSubmit = async(values, { setSubmitting }) => {
-    setShowResponse(true)
+    setShowLoader(true)
+    // setShowResponse(true)
+
     let message = `  <b>ЗАКАЗ</b>\n\n\n`;
     message += `\u{1F603} Имя: <b>${values.firstName}</b>\n\n`
     message += `\u{1F60F} Фамилия: <b>${values.lastName}</b>\n\n`
@@ -101,8 +104,14 @@ const OrderForm = ({setState}) =>{
   >
     {({ isSubmitting }) => (
       <Form className='absolute flex w-screen h-screen top-0 left-0 bg-black bg-opacity-70 z-50 overflow-hidden'>
+        
         {showResponse ? <ResponseOrder/> :
           <div className='relative w-[500px] h-[500px] max-sm:w-full  mx-auto my-auto justify-center bg-slate-50 rounded-xl border border-solid border-[grey]'>
+            {showLoader && 
+          
+            <Image className='absolute top-0 left-0 w-full h-full' src='/spinner.svg' width={100} height={100} alt='spinner' />
+          
+          }
           <button className='absolute top-[20px] right-[20px]' onClick={()=>{setState(false);document.body.style.overflow = 'auto'}}><Image src='cancel.svg' width={20} height={20} alt='Exit' /></button>
               <div className='flex items-center  h-full w-[300px] mx-auto py-10  flex-wrap'>
                   <div className='w-full  flex flex-col'>

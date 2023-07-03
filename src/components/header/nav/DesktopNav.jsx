@@ -18,7 +18,7 @@ const DesktopNav = () =>{
     return(
         <nav className="nav max-[1000px]:hidden">
             <LayoutGroup >
-                <ul  className=" flex   justify-start items-center gap-2   font-medium text-[16px] text-center box-content ">
+                <ul  className=" flex   justify-start items-center gap-2    text-[18px] text-center box-content ">
                     <li className="relative p-1 "   onClick={(e)=>{activateNav(e)}} ><Link  href='/' >Головна</Link>
                         {pageNow === '/' ? <motion.div layoutId="line"  className="w-full h-[4px] bg-[#0E8388] rounded-[10px] absolute left-0 bottom-0"></motion.div> : null}
                     </li>
