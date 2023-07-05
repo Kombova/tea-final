@@ -5,18 +5,19 @@ import ControleCard from "./ControleCard";
 const ProductCardFull = ({product}) =>{
 const[picture,setPicture]=useState(`http:${product.fields.mainImg.fields.file.url}`);
 const[price,setPrice]=useState(+product.fields.price)
-
+const[fullScreenImg,setScreenImg]=useState(false)
     return(
         <div className="w-full overflow-y-hidden">
             <div className="flex flex-wrap justify-center">
                 <section className="max-sm:basis-0 basis-2/4 p-4 max-sm:p-0">
-                    <div className="mx-auto relative w-full h-[500px] max-sm:w-screen max-sm:h-80 max-sm:border-0 border-[1px] border-soild border-[grey]">
-                        <Image className=" top-0 left-0 object-cover" src={picture} fill={true} alt={'Зображення продукту'}/>
+                    <div className="mx-auto relative w-full h-[500px] max-sm:w-screen max-sm:h-80 max-sm:border-0 border-[1px] border-soild border-[grey]" onClick={()=>{window.innerWidth > 800 && setScreenImg(true); document.body.style.overflow='hidden'}}>
+                            <Image className=" top-0 left-0 object-cover " src={picture} fill={true} alt={'Зображення продукту'}/>
+                            
                     </div>
                     <ul className="flex max-sm:justify-center max-sm:mx-2 max-sm:gap-1 gap-2 mt-2 ">
                         {
                             product.fields.arrImg.map((item)=>{
-                                return <li onClick={(e)=>setPicture(`http:${item.fields.file.url}`)} className="border-[1px] max-sm:border-0 border-soild border-[grey] relative w-full h-[100px] cursor-pointer" key={item.fields.file.url}><Image  src={`http:${item.fields.file.url}`} fill={true} alt={'Зображення продукту'}/></li>
+                                return <li onClick={(e)=>setPicture(`http:${item.fields.file.url}`)} className="border-[1px] max-sm:border-0 border-soild border-[grey] relative w-full h-[100px] cursor-pointer" key={item.fields.file.url}><Image className=" object-cover"  src={`http:${item.fields.file.url}`} fill={true} alt={'Зображення продукту'}/></li>
                             })
                         }
                     </ul>
@@ -24,7 +25,14 @@ const[price,setPrice]=useState(+product.fields.price)
                         <p className=" border-b-[1px] mx-auto border-solid border-[grey] w-48 mt-5 flex justify-between font-normal color-[#001011]">Ціна :<span className="text-[20px] font-semibold color-[#001011] ">{price} грн</span></p>
                         <ControleCard step={product.fields.category.fields.step} setPrice={setPrice} initialPrice={+product.fields.price} id={product.sys.id} price={price} title={product.fields.title} img={picture} category={product.fields.category.sys.contentType.sys.id} full={true}/>
                     </div>
-                    
+                    {fullScreenImg &&
+                        <div className="absolute top-0 left-0 h-full w-full bg-black bg-opacity-80 z-40 flex items-center justify-center" >
+                            <button><Image className="absolute top-10 right-10" src='/cancel.svg' width={25} height={25} alt='back' onClick={()=>{setScreenImg(false); document.body.style.overflow='auto'}}/></button>
+                            <div className="relative w-4/5 h-screen">
+                                <Image className=" top-0 left-0 object-cover " src={picture} fill={true} alt={'Зображення продукту'}/>
+                            </div>
+                        </div>
+                    }
                     
                 </section>
 

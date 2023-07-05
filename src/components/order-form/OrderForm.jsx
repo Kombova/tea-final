@@ -37,13 +37,11 @@ const initialValues = {
       errors.phoneNumber = 'Введіть номер телефону';
     }
 
-    if (!values.postOfficeNumber) {
-        errors.postOfficeNumber = 'Введіть номер відділення';
-      }
+
       if (!values.postOfficeNumber) {
-        errors.postOfficeNumber = 'Введите число';
+        errors.postOfficeNumber = 'Введіть номер відділення';
       } else if (isNaN(values.postOfficeNumber)) {
-        errors.postOfficeNumber = 'Введите допустимое число';
+        errors.postOfficeNumber = 'Введіть число';
       }
   
     return errors;
@@ -127,7 +125,7 @@ const OrderForm = ({setState}) =>{
       <Form className=''>
         
         
-          <div className=' relative p-4   justify-center  border-r-[1px] border-b-[1px] border-solid border-[grey]'>
+          <div className=' relative p-4   justify-center  border-r-[1px]  border-solid border-[grey]'>
             <button className='absolute top-0 left-[20px]' onClick={()=>{router.back()}}><Image src='back.svg' width={20} height={20} alt='Exit' /></button>
               <div className='flex items-center  w-[400px] max-[950px]:w-full py-10  flex-wrap'>
                   <div className='w-full  flex flex-col'>

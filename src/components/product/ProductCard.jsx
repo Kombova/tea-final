@@ -11,7 +11,7 @@ const ProductCard = ({product}) =>{
    
    return(  
         <li  className="w-[290px] h-[405px] rounded-[15px] shadow-2xl overflow-none bg-slate-200" style={{ boxShadow: '2px 2px 7px rgba(34, 31, 31, 0.4)' }}>
-            <div className="w-full h-48 relative rounded-t-[15px] object-cover">
+            <div className="w-full h-48 relative rounded-t-[15px] object-cover hover:opacity-70">
                 <Link href={product.sys.id}>
                     <Image className=" rounded-t-[15px] top-0 left-0" src={image} fill={true} alt={product.fields.title}/>
                 </Link>
