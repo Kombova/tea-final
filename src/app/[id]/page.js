@@ -1,5 +1,6 @@
 import client from "@/contentful"
 import ProductCardFull from "@/components/product/ProductCardFull";
+import { notFound } from "next/navigation";
 export async function generateStaticParams() {
     const getProducts = async ()=>{
         const data =await client.getEntries({
@@ -21,7 +22,15 @@ return data;
 
 export default async function Product({params}){
     let id = params.id;
-    let product = await getProduct(id);
+    let product
+    try{
+       product = await getProduct(id);
+    }
+    catch{
+      notFound();
+    }
+   
+  
     return(
         <>
             <ProductCardFull product={product}/>

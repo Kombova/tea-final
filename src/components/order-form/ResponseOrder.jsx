@@ -5,7 +5,7 @@ const ResponseOrder = ({result,sum}) =>{
     return(
         <div className="min-h-screen w-full left-0 flex items-center relative border border-[grey]  max-sm:border-0  max-sm:rounded-none rounded-xl">
                 <Image className="absolute top-0 left-0 w-full h-full rounded-md -z-10 opacity-80 object-cover max-sm:rounded-none" src='/tea_order_response.jpg' fill={true}/>
-            <div className="w-full max-sm:h-full  py-6 mx-auto z-10  rounded relative text-center     max-sm:flex max-sm:flex-col max-sm:justify-between ">
+            <div className="w-full  py-6 mx-auto z-10  rounded relative text-center    ">
             
                 {result === 'Ok' &&
                 <>
@@ -48,7 +48,7 @@ const ResponseOrder = ({result,sum}) =>{
                     
                 </>
                 }    
-                {result === 'Error' && <p>Error</p>} 
+                {result === 'Error' && <p className="text-[25px] text-white bg-gray-600 p-2 w-fit mx-auto rounded-lg">Щось пішло не за планом можливо проблеми з інтернетом спробуйте ще...</p>} 
             </div>
         </div>
     )
