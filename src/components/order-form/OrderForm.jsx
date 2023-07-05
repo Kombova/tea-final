@@ -5,6 +5,7 @@ import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { GlobalStateContext } from '@/context/GlobalState';
 import ResponseOrder from './ResponseOrder';
+import OrderCart from './OrderCart';
 const initialValues = {
     firstName: '',
     lastName: '',
@@ -93,25 +94,35 @@ const OrderForm = ({setState}) =>{
             })
             if (response.ok) {
                 console.log('Сообщение успешно отправлено в Telegram');
+                setShowLoader(false)
+                setShowResponse('Ok')
               } else {
                 console.error('Ошибка при отправке сообщения в Telegram:', response.status);
+                setShowLoader(false)
+                setShowResponse('Error')
               }
-        }catch (error) {
+        }
+        catch (error) {
             console.error('Ошибка при отправке запроса в Telegram API:', error);
+            setShowLoader(false)
+            setShowResponse('Error')
           }
            
   };
 
     return(
-        <Formik
-    initialValues={initialValues}
-    validate={validateForm}
-    onSubmit={handleSubmit}
-  >
+  <div className='flex justify-center gap-5 flex-wrap '>
+    {!showResponse &&
+    <>
+    <Formik
+      initialValues={initialValues}
+      validate={validateForm}
+      onSubmit={handleSubmit}
+    >
     {({ isSubmitting }) => (
       <Form className=''>
         
-        {showResponse ? <ResponseOrder/> :
+        
           <div className=' relative p-4   justify-center  border-r-[1px] border-b-[1px] border-solid border-[grey]'>
             <button className='absolute top-0 left-[20px]' onClick={()=>{router.back()}}><Image src='back.svg' width={20} height={20} alt='Exit' /></button>
               <div className='flex items-center  w-[400px] max-[950px]:w-full py-10  flex-wrap'>
@@ -171,14 +182,18 @@ const OrderForm = ({setState}) =>{
                   </button>
               </div>
           </div>
-        } 
+         
         
       </Form>
     )}
   </Formik>
-  // {showLoader && <div><Image className='absolute top-0 left-0 w-full h-full' src='/spinner.svg' width={100} height={100} alt='spinner' /></div>
+  <OrderCart/>
+  </>
+}
+    {showResponse && <ResponseOrder result={showResponse}/>}
+   {showLoader && <div className='absolute top-0 left-0 z-50 w-full h-full bg-black bg-opacity-50'><Image className='absolute top-0 left-0 w-full h-full' src='/spinner.svg' width={100} height={100} alt='spinner' /></div>}
   
-  // }
+  </div>
     )
 }
 
