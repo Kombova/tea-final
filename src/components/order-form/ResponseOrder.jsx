@@ -3,18 +3,18 @@ import Link from "next/link";
 const ResponseOrder = ({result}) =>{
     
     return(
-        <div className={` w-screen h-[1000px] max-sm:h-[550px] flex items-center  `}>
-            <div className="w-full max-sm:h-full  py-4 mx-auto z-10  rounded relative text-center     max-sm:flex max-sm:flex-col max-sm:justify-between ">
+        <div className="h-screen w-full left-0 flex items-center relative border border-[grey] rounded-xl">
                 <Image className="absolute top-0 left-0 w-full h-full rounded-md -z-10 opacity-80 object-cover " src='/tea_order_response.jpg' fill={true}/>
+            <div className="w-full max-sm:h-full  py-6 mx-auto z-10  rounded relative text-center     max-sm:flex max-sm:flex-col max-sm:justify-between ">
             
                 {result === 'Ok' &&
                 <>
                     
                     <h2 className=" text-center py-1 max-sm:mt-2  mx-auto bg-[#0E6288] bg-opacity-80 text-[20px] text-slate-200 max-sm:w-full">Замовлення відправлене</h2>
-                    <h3 className="mt-2 bg-[#095C62] text-slate-200">На протязі 10 хв ми з вами зв&apos;яжемось</h3>
+                    <h3 className="mt-4 bg-[#095C62] text-slate-200">На протязі 10 хв ми з вами зв&apos;яжемось</h3>
                     <div className="w-[300px] mx-auto">   
                         <p className=" mt-2 py-2 border-b-2 border-[grey]">Зв&apos;язок</p>
-                        <div className="mt-2 max-sm:mt-4 flex justify-center gap-2 flex-wrap">
+                        <div className="mt-4 flex justify-center gap-3 flex-wrap">
                             <a className="bg-[#0E8388] p-1 rounded-md basis-full text-slate-200 hover:scale-110" href='tel:380963935605'>+380 96 39 35 605</a>
                             <Link className="hover:scale-110" href='#'><Image src='/gmail.ico' width={50} height={50} alt="Посилання на пошту"/></Link>
                             <Link className="hover:scale-110" href='#'><Image src='/telegram.png' width={50} height={50} alt="Посилання телеграм"/></Link>
@@ -29,7 +29,7 @@ const ResponseOrder = ({result}) =>{
                         <p className=" mt-2 py-2 border-b-2 border-[grey]">Оплата</p>
 {/*------------------------ DESKTOP VERSION */}
 
-                        <div className="mt-2 flex justify-center gap-4 flex-wrap max-sm:hidden">
+                        <div className="mt-6 flex justify-center gap-4 flex-wrap max-sm:hidden">
                             <div className="rounded-md hover:scale-110">
                                 <Image className="rounded-md" src='/monobank.jpg' width={200} height={100} alt="Посилання на монобанк"/>
                             </div>

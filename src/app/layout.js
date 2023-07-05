@@ -30,7 +30,7 @@ let fetchLogo = await getSiteControle();
         <GlobalStateProvider>
           <div className='w-full'>
             <Header fetchLogo={fetchLogo[0].fields.logo.fields.file.url}/>
-              <main className=' min-h-screen max-w-7xl mx-auto mt-[75px] py-6'>
+              <main className=' max-w-7xl min-h-screen mx-auto mt-[75px] py-6'>
                 {children}
               </main>
             <Footer/>
