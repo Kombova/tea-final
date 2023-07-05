@@ -14,7 +14,7 @@ import Image from "next/image";
 const PhoneNav = () =>{
     const[viewNav,setViewNav]=useState(false);
     const[showTeaNav,setShowTeaNav]=useState(false)
-    let{globalState,setGlobalState}=useContext(GlobalStateContext)
+    let{setGlobalState}=useContext(GlobalStateContext)
     const router = useRouter()
     typeof window !== 'undefined' && viewNav ? document.body.style.overflow = 'hidden' : null; 
     
@@ -51,7 +51,7 @@ const PhoneNav = () =>{
                         viewNav &&
                             <>
                                 <motion.div 
-                                    className={` phone_nav w-[90%] z-50 h-screen absolute  left-0 top-0 py-[30px] pt-[60px] bg-[#c4d4d4]    text-[25px] `}
+                                    className={` phone_nav w-[90%] z-50 h-screen absolute  left-0 top-0 py-[30px] pt-[60px] bg-[#c4d4d4]    text-[20px] `}
                                     initial={{translateX:'-100%' }}
                                     animate={{translateX:'0%',overflow: 'none'}}
                                     exit={{translateX:'-100%'}}
@@ -59,8 +59,8 @@ const PhoneNav = () =>{
                                     >
                                     
                                     <ul className=" flex flex-col items-start p-5">
-                                        <li className="  pb-2 " onClick={()=>clickOnButton()}><Link className="w-full" href={'/'}>Головна</Link></li>
-                                        <li className={`${showTeaNav ? 'w-full border-t-[1px] border-solid border-[grey] bg-slate-400 bg-opacity-70' : ''}  flex justify-start gap-2 items-start`} onClick={()=>setShowTeaNav(!showTeaNav)}>Чай<span>+</span></li>
+                                        <li className="px-2  pb-2 " onClick={()=>clickOnButton()}><Link className="w-full" href={'/'}>Головна</Link></li>
+                                        <li className={`${showTeaNav ? 'w-full border-t-[1px] border-solid border-[grey] bg-[#0E8388] bg-opacity-70' : ''} px-2  flex justify-start gap-2 items-start`} onClick={()=>setShowTeaNav(!showTeaNav)}>Чай<Image className="my-auto" src={'triangle_down.svg'} width={20} height={20} alt='Трикутник до низу'/></li>
                                         {showTeaNav &&
                                             <li className="w-full ">
                                                 <ul className="w-full flex flex-col items-center  border-b-[1px] border-solid border-[grey]">
@@ -72,10 +72,10 @@ const PhoneNav = () =>{
                                                 </ul>
                                             </li>           
                                         }
-                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/teaware-shop'}>Посуд</Link></li>
-                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/about-us'}>Про нас</Link></li>
-                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/delivery'}>Доставка</Link></li>    
-                                        <li className="   pb-2" onClick={()=>clickOnButton()}><Link href={'/'}>Блог</Link></li>
+                                        <li className="px-2   pb-2" onClick={()=>clickOnButton()}><Link href={'/teaware-shop'}>Посуд</Link></li>
+                                        <li className="px-2   pb-2" onClick={()=>clickOnButton()}><Link href={'/about-us'}>Про нас</Link></li>
+                                        <li className="px-2   pb-2" onClick={()=>clickOnButton()}><Link href={'/delivery'}>Доставка</Link></li>    
+                                        <li className="px-2   pb-2" onClick={()=>clickOnButton()}><Link href={'/'}>Блог</Link></li>
                                     </ul>
                                                   
                                     <button className=" cancel_button w-[20px] h-[20px] absolute right-[20px] top-[20px]" onClick={()=>clickOnButton()}>

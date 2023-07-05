@@ -114,7 +114,8 @@ const OrderForm = ({setState}) =>{
   };
 
     return(
-  <div className='flex justify-center gap-5 flex-wrap '>
+  <div className='flex justify-center gap-5 flex-wrap  min-h-screen items-center relative'>
+    
     {!showResponse &&
     <>
     <Formik

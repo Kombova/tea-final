@@ -96,7 +96,7 @@ const ControleCard = ({step,setPrice,initialPrice,price,title,img,id,category,fu
                 </div>     
             }
             {!activeButton &&
-                <button className={`${full ? 'w-[300px]' : 'w-full'} h-12   flex justify-center gap-3 items-center text-[19px] text-white rounded-[10px] font-semibold bg-[#0E8388]`} onClick={()=> postToShoppingCart(title,img,count,price,id,category,step)}><span>В кошик</span><Image src='little-cart.svg' width={30} height={30} alt='Shopping cart' /></button>
+                <button className={`${full ? 'w-[300px]' : 'w-full'} h-12   flex justify-center gap-3 items-center text-[19px] text-white rounded-[10px] font-semibold bg-[#0E8388]`} onClick={()=> postToShoppingCart(title,img,count,price,id,category,step)}><span>В кошик</span><Image className="w-auto h-auto" src='little-cart.svg' width={30} height={30} alt='Shopping cart' /></button>
             }
             {activeButton &&
                 <motion.button
