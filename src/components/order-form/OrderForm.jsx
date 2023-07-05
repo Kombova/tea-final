@@ -57,7 +57,10 @@ const OrderForm = ({setState}) =>{
   const[selectPost,setSelectPost]=useState('Нова Пошта')
   const router = useRouter();
   let{globalState}=useContext(GlobalStateContext);
-
+  let sum = 0;
+  globalState.shoppingCartArr.forEach(element => {
+    sum += element.price;
+  });
 
   const handleSubmit = async(values, { setSubmitting }) => {
     setShowLoader(true)
@@ -190,7 +193,7 @@ const OrderForm = ({setState}) =>{
   <OrderCart/>
   </>
 }
-    {showResponse && <ResponseOrder result={showResponse}/>}
+    {showResponse && <ResponseOrder result={showResponse} sum={sum}/>}
    {showLoader && <div className='absolute top-0 left-0 z-50 w-full h-full bg-black bg-opacity-50'><Image className='absolute top-0 left-0 w-full h-full' src='/spinner.svg' width={100} height={100} alt='spinner' /></div>}
   
   </div>

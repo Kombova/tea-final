@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-const ResponseOrder = ({result}) =>{
-    
+const ResponseOrder = ({result,sum}) =>{
+    const grivnaSymbol = "\u20B4";
     return(
-        <div className="h-screen w-full left-0 flex items-center relative border border-[grey] rounded-xl">
-                <Image className="absolute top-0 left-0 w-full h-full rounded-md -z-10 opacity-80 object-cover " src='/tea_order_response.jpg' fill={true}/>
+        <div className="min-h-screen w-full left-0 flex items-center relative border border-[grey]  max-sm:border-0  max-sm:rounded-none rounded-xl">
+                <Image className="absolute top-0 left-0 w-full h-full rounded-md -z-10 opacity-80 object-cover max-sm:rounded-none" src='/tea_order_response.jpg' fill={true}/>
             <div className="w-full max-sm:h-full  py-6 mx-auto z-10  rounded relative text-center     max-sm:flex max-sm:flex-col max-sm:justify-between ">
             
                 {result === 'Ok' &&
@@ -43,7 +43,7 @@ const ResponseOrder = ({result}) =>{
                             <Link className="rounded-md" href='#'><Image className="rounded-md" src='/mono_little_logo.jpeg' width={60} height={60} alt="Посилання ватсап"/></Link>
                             <Link className="bg-black py-1 px-[6px] rounded-md" href='#'><Image  src='/privat_little_logo.png' width={50} height={50} alt="Посилання ватсап"/></Link>
                         </div>
-
+                    <p className="mt-8 text-[20px] pb-2 border-b-2 border-black  max-sm:border-0">Сумма до сплати : <span className=" p-1 bg-[#0E8388] text-white rounded-md">{grivnaSymbol}{sum}</span>  </p>
                     </div>
                     
                 </>
