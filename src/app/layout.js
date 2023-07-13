@@ -24,12 +24,14 @@ const getSiteControle = async ()=>{
 }
 
 export default async function RootLayout({ children }) {
-     
+   
 let fetchLogo = await getSiteControle();
   return (
     <html>
       <body className={montserrat.className}>
-        <GlobalStateProvider>
+        {children.props && children.props.childProp.segment === 'admin' && children }
+        {children.props && children.props.childProp.segment !== 'admin' &&
+          <GlobalStateProvider>
           <div className='w-full'>
             <Header fetchLogo={fetchLogo[0].fields.logo.fields.file.url}/>
               <main className=' max-w-7xl min-h-screen mx-auto mt-[75px] py-6'>
@@ -40,6 +42,7 @@ let fetchLogo = await getSiteControle();
             <Footer/>
           </div>
         </GlobalStateProvider>
+        }
       </body>
     </html>
   )
