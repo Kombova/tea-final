@@ -2,7 +2,7 @@ import TopNavAdmin from "./TopNavAdmin";
 
 const HeaderAdmin = () =>{
     return(
-        <div className=" mt-14 w-screen h-[50px] bg-[#6d1111]">
+        <div className=" w-screen h-[50px]">
             <TopNavAdmin/>
         </div>
     )

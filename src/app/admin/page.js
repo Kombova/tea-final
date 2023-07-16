@@ -1,4 +1,4 @@
-import HeaderAdmin from "@/admin-components/header/HeaderAdmin";
+import HeaderAdmin from "@/components/ADMIN/header/HeaderAdmin";
 const Admin = () =>{
     return(
         <div className="w-screen min-h-screen">   
